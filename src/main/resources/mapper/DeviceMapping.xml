@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.oa.dao.DeviceDao">
+	<insert id="addDevice" parameterType="com.example.oa.domain.Device">
+		insert into device
+		(devicename,deviceprice,devicenumber,manufacture)
+		values(#{devicename},#{deviceprice},#{devicenumber},#{manufacture})
+	</insert>
+	<update id="updateDevice" parameterType="com.example.oa.domain.Device">
+		update device set
+		devicename=#{devicename},deviceprice=#{deviceprice},devicenumber=#{devicenumber},manufacture=#{manufacture}
+		where deviceid=#{deviceid}
+	</update>
+	<delete id="deleteDevice" parameterType="com.example.oa.domain.Device">
+		delete from device where
+		deviceid=#{deviceid}
+	</delete>
+	<select id="selectDeviceById" parameterType="java.lang.Integer"
+		resultType="com.example.oa.domain.Device">
+		select
+		deviceid,devicename,deviceprice,devicenumber,manufacture from
+		device where
+		deviceid=#{id}
+	</select>
+	<select id="getallDevice" resultType="com.example.oa.domain.Device">
+		SELECT
+		d.deviceid,d.devicename,d.devicenumber,d.deviceprice,d.manufacture
+		FROM device d
+	</select>
+</mapper>

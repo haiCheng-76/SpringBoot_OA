@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.oa.dao.EmployeeDao">
+	<resultMap type="com.example.oa.domain.Employee"
+		id="employeeInfo">
+		<result property="employee_id" column="employee_id" />
+		<result property="employee_account" column="employee_account" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="age" column="age" />
+		<result property="address" column="address" />
+		<result property="roleid" column="roleid" />
+		<result property="departmentName" column="departmentname" />
+		<result property="departmentid" column="departmentid" />
+	</resultMap>
+	<insert id="addEmployee"
+		parameterType="com.example.oa.domain.Employee">
+		INSERT INTO employee
+		(employee_account, username,
+		password, age, address,
+		role,
+		departmentid) VALUES (#{employee_account},
+		#{username}, #{password},
+		#{age},
+		#{address}, #{role}, #{departmentid})
+	</insert>
+	<update id="updateEmployee"
+		parameterType="com.example.oa.domain.Employee">
+		update employee set
+		employee_account=#{employee_account},username=#{username},password=#{password},age=#{age},address=#{address},role=#{role},departmentid=#{departmentid}
+		where employee_id=#{employee_id}
+	</update>
+	<delete id="deleteEmployee"
+		parameterType="com.example.oa.domain.Employee">
+		delete from employee
+		where employee_id=#{employee_id}
+	</delete>
+	<select id="selectEmployeeById"
+		parameterType="java.lang.Integer" resultMap="employeeInfo">
+		SELECT
+		e.employee_account,e.employee_id,e.username,e.`password`,e.age,e.address,d.departmentname,e.departmentid,e.role
+		FROM employee e,department d
+		WHERE e.departmentid=d.departmentid and
+		e.employee_id=#{employee_id}
+	</select>
+	<select id="getallEmployee" resultMap="employeeInfo">
+		SELECT
+		e.employee_id,e.employee_account,e.username,e.`password`,d.departmentname,e.age,e.address,e.role
+		FROM employee e,department d
+		where e.departmentid=d.departmentid ORDER BY e.employee_id
+	</select>
+
+	<select id="getuserByUPR"
+		parameterType="com.example.oa.domain.Employee" resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		employee
+		WHERE
+		role = #{role}
+		AND
+		employee_account =
+		#{employee_account}
+		AND PASSWORD = #{password};
+	</select>
+	<update id="forgetPassword"
+		parameterType="com.example.oa.domain.Employee">
+		UPDATE employee set
+		`password`=#{password} where
+		employee_account=#{employee_account} and
+		role=#{role};
+	</update>
+</mapper>

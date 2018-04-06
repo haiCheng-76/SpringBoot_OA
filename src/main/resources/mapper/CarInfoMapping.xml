@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.oa.dao.CarInfoDao">
+	<insert id="addCarInfo"
+		parameterType="com.example.oa.domain.CarInfo">
+		insert into carinfo
+		(carname,carnumber,carprice)
+		values(#{carname},#{carnumber},#{carprice})
+	</insert>
+	<update id="updateCarInfo"
+		parameterType="com.example.oa.domain.CarInfo">
+		UPDATE carinfo c set
+		c.carname=#{carname},c.carnumber=#{carnumber},c.carprice=#{carprice}
+		WHERE
+		c.carid=#{carid}
+	</update>
+	<delete id="deleteCarInfo"
+		parameterType="com.example.oa.domain.CarInfo">
+		delete from carinfo
+		where carid=#{carid}
+	</delete>
+	<select id="selectCarInfoById" parameterType="java.lang.Integer"
+		resultType="com.example.oa.domain.CarInfo">
+		SELECT
+		carid,carname,carnumber,carprice
+		FROM carinfo
+		WHERE
+		carid=#{id}
+	</select>
+	<select id="getallCarInfo"
+		resultType="com.example.oa.domain.CarInfo">
+		SELECT
+		carid,carname,carnumber,carprice
+		FROM carinfo ORDER BY carid
+	</select>
+</mapper>
