@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.oa.dao.EmployeeDao">
-	<resultMap type="com.example.oa.domain.Employee"
+<mapper namespace="com.example.demo.dao.EmployeeDao">
+	<resultMap type="com.example.demo.domain.Employee"
 		id="employeeInfo">
 		<result property="employee_id" column="employee_id" />
 		<result property="employee_account" column="employee_account" />
@@ -14,7 +14,7 @@
 		<result property="departmentid" column="departmentid" />
 	</resultMap>
 	<insert id="addEmployee"
-		parameterType="com.example.oa.domain.Employee">
+		parameterType="com.example.demo.domain.Employee">
 		INSERT INTO employee
 		(employee_account, username,
 		password, age, address,
@@ -25,13 +25,13 @@
 		#{address}, #{role}, #{departmentid})
 	</insert>
 	<update id="updateEmployee"
-		parameterType="com.example.oa.domain.Employee">
+		parameterType="com.example.demo.domain.Employee">
 		update employee set
 		employee_account=#{employee_account},username=#{username},password=#{password},age=#{age},address=#{address},role=#{role},departmentid=#{departmentid}
 		where employee_id=#{employee_id}
 	</update>
 	<delete id="deleteEmployee"
-		parameterType="com.example.oa.domain.Employee">
+		parameterType="com.example.demo.domain.Employee">
 		delete from employee
 		where employee_id=#{employee_id}
 	</delete>
@@ -51,7 +51,7 @@
 	</select>
 
 	<select id="getuserByUPR"
-		parameterType="com.example.oa.domain.Employee" resultType="java.lang.Integer">
+		parameterType="com.example.demo.domain.Employee" resultType="java.lang.Integer">
 		SELECT
 		COUNT(*)
 		FROM
@@ -64,7 +64,7 @@
 		AND PASSWORD = #{password};
 	</select>
 	<update id="forgetPassword"
-		parameterType="com.example.oa.domain.Employee">
+		parameterType="com.example.demo.domain.Employee">
 		UPDATE employee set
 		`password`=#{password} where
 		employee_account=#{employee_account} and

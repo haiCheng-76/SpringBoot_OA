@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.oa.dao.DepartmentDao">
+<mapper namespace="com.example.demo.dao.DepartmentDao">
 	<insert id="addDepartment"
-		parameterType="com.example.oa.domain.Department">
+		parameterType="com.example.demo.domain.Department">
 		insert into department
 		(departmentname,departmenttelephone,departmentaddress)
 		values(#{departmentname},#{departmenttelephone},#{departmentaddress})
 	</insert>
 	<update id="updateDepartment"
-		parameterType="com.example.oa.domain.Department">
+		parameterType="com.example.demo.domain.Department">
 		update department
 		set
 		departmentname=#{departmentname},departmenttelephone=#{departmenttelephone},departmentaddress=#{departmentaddress}
 		where departmentid=#{departmentid}
 	</update>
 	<delete id="deleteDepartment"
-		parameterType="com.example.oa.domain.Department">
+		parameterType="com.example.demo.domain.Department">
 		delete from
 		department where departmentid=#{departmentid}
 	</delete>
 	<select id="selectDepartmentById"
 		parameterType="java.lang.Integer"
-		resultType="com.example.oa.domain.Department">
+		resultType="com.example.demo.domain.Department">
 		SELECT
 		d.departmentid,d.departmentname,d.departmenttelephone,d.departmentaddress
 		from
@@ -29,7 +29,7 @@
 		WHERE d.departmentid=#{id}
 	</select>
 	<select id="getallDepartment"
-		resultType="com.example.oa.domain.Department">
+		resultType="com.example.demo.domain.Department">
 		SELECT
 		departmentname,departmenttelephone,departmentaddress,departmentid
 		from

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.oa.dao.FileDao">
-	<resultMap type="com.example.oa.domain.File" id="fileInfo">
+<mapper namespace="com.example.demo.dao.FileDao">
+	<resultMap type="com.example.demo.domain.File" id="fileInfo">
 		<result property="fileid" column="fileid" />
 		<result property="filename" column="filename" />
 		<result property="filesize" column="filesize" />
@@ -11,7 +11,7 @@
 		<result property="file_location" column="file_location" />
 	</resultMap>
 	<!-- 插入文件信息 -->
-	<insert id="addFile" parameterType="com.example.oa.domain.File">
+	<insert id="addFile" parameterType="com.example.demo.domain.File">
 		INSERT INTO `file`
 		(filename,
 		filesize, fileuploadtime, employee_id,
@@ -21,12 +21,12 @@
 		#{file_location})
 	</insert>
 	<!-- 修改文件信息 -->
-	<update id="updateFile" parameterType="com.example.oa.domain.File">
+	<update id="updateFile" parameterType="com.example.demo.domain.File">
 		update file set
 		filename=#{filename},employee_id=#{employee_id} where fileid=#{fileid}
 	</update>
 	<!-- 删除文件信息 -->
-	<delete id="deleteFile" parameterType="com.example.oa.domain.File">
+	<delete id="deleteFile" parameterType="com.example.demo.domain.File">
 		delete from file where
 		fileid=#{fileid}
 	</delete>
