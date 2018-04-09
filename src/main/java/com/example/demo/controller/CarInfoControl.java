@@ -21,7 +21,7 @@ public class CarInfoControl {
 	@Autowired
 	private CarService carService;
 
-	@GetMapping()
+	@GetMapping("/getAllCarIfo")
 	public List<CarInfo> getAllCarIfo() {
 		List<CarInfo> allCarInfo = null;
 		try {
@@ -32,7 +32,7 @@ public class CarInfoControl {
 		return allCarInfo;
 	}
 
-	@PostMapping
+	@PostMapping("/addCarIfo")
 	public String addCarIfo(@ModelAttribute("CarInfo") CarInfo carInfo) {
 		boolean isadded = false;
 		try {
@@ -46,7 +46,7 @@ public class CarInfoControl {
 		return "ERROR";
 	}
 
-	@GetMapping(value="{id}")
+	@GetMapping(value="/getCarinfoById/{id}")
 	public CarInfo getCarinfoById(@PathVariable("id") Integer ID) {
 		CarInfo carInfo = new CarInfo();
 		try {
@@ -57,7 +57,7 @@ public class CarInfoControl {
 		return carInfo;
 	}
 
-	@PutMapping
+	@PutMapping("/updateCarinfo")
 	public String updateCarinfo(@ModelAttribute("CarInfo")CarInfo carInfo) {
 		boolean isupdate = false;
 		try {
@@ -71,7 +71,7 @@ public class CarInfoControl {
 		return "ERROR";
 	}
 
-	@DeleteMapping("{ID}")
+	@DeleteMapping("/deleteCarinfo/{ID}")
 	public String deleteCarinfo(Integer ID) {
 		boolean isdelete = false;
 		CarInfo carInfo = new CarInfo();

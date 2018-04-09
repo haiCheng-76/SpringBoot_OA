@@ -27,7 +27,7 @@ public class FileControl {
 	private FileService fileservice;
 	private Logger log = Logger.getLogger(FileControl.class);
 
-	@PostMapping()
+	@PostMapping("/addFile")
 	public String addFile(@RequestParam(value = "file") CommonsMultipartFile uploadFile, HttpServletRequest request,
 			@RequestParam(value = "uploader") Integer uploader) {
 		log.info("文件：" + uploadFile + "uploader:" + uploader);
@@ -65,7 +65,7 @@ public class FileControl {
 		return "ERROR";
 	}
 
-	@GetMapping()
+	@GetMapping("/getAllFile")
 	public List<File> getAllFile() {
 		List<File> listFile = null;
 		try {
@@ -77,7 +77,7 @@ public class FileControl {
 		return listFile;
 	}
 
-	@GetMapping("{ID}")
+	@GetMapping("/getFileById/{ID}")
 	public File getFileById(@PathVariable("ID") Integer ID) {
 		File file = new File();
 		file.setFileid(ID);
@@ -85,7 +85,7 @@ public class FileControl {
 		return f;
 	}
 
-	@DeleteMapping("{ID}")
+	@DeleteMapping("/deleteFile/{ID}")
 	public String deleteFile(@PathVariable("ID") Integer ID) {
 		boolean isdelete = false;
 		String location = "";

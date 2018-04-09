@@ -23,7 +23,7 @@ public class DepartmentControl {
 	@Autowired
 	private DepartmentService departmentService;
 
-	@GetMapping()
+	@GetMapping("/getAllDepartment")
 	public List<Department> getAllDepartment() {
 		List<Department> listDepartment = null;
 		try {
@@ -36,7 +36,7 @@ public class DepartmentControl {
 		return listDepartment;
 	}
 	
-	@PostMapping()
+	@PostMapping("/addDepartment")
 	public String addDepartment(@ModelAttribute("Department") Department d) {
 		boolean isadded = false;
 		try {
@@ -51,7 +51,7 @@ public class DepartmentControl {
 	}
 
 	
-	@GetMapping(value="{ID}")
+	@GetMapping(value="/getDepartmentById/{ID}")
 	public Department getDepartmentById(@PathVariable("ID")Integer ID) {
 		Department department = new Department();
 		try {
@@ -63,7 +63,7 @@ public class DepartmentControl {
 		return department;
 	}
 
-	@PutMapping()
+	@PutMapping("/updateDepartment")
 	public String updateDepartment(@ModelAttribute("Department") Department d) {
 		boolean isupdate = false;
 		try {
@@ -78,7 +78,7 @@ public class DepartmentControl {
 		return "ERROR";
 	}
 
-	@DeleteMapping(value="{ID}")
+	@DeleteMapping(value="/deleteDepartment/{ID}")
 	public String deleteDepartment(@PathVariable("ID") Integer ID) {
 		Department d = new Department();
 		d.setDepartmentid(ID);

@@ -29,7 +29,7 @@ public class DeviceControl {
 	 * @return
 	 * @author 龙海成
 	 */
-	@GetMapping()
+	@GetMapping("/getAllDevice")
 	public List<Device> getAllDevice() {
 		List<Device> listDevice = null;
 		try {
@@ -41,7 +41,7 @@ public class DeviceControl {
 		return listDevice;
 	}
 
-	@PostMapping()
+	@PostMapping("/addDevice")
 	public String addDevice(@ModelAttribute("Device") Device device) {
 		boolean isadded = false;
 		try {
@@ -63,7 +63,7 @@ public class DeviceControl {
 	 * @return
 	 * @author 龙海成
 	 */
-	@GetMapping("{ID}")
+	@GetMapping("/getDeviceById/{ID}")
 	public Device getDeviceById(@PathVariable("ID")Integer ID) {
 		Device device = new Device();
 		try {
@@ -83,7 +83,7 @@ public class DeviceControl {
 	 * @author 龙海成
 	 */
 	
-	@PutMapping()
+	@PutMapping("/updateDevice")
 	public String updateDevice(@ModelAttribute("Device")Device d) {
 		boolean isupdate = false;
 		try {
@@ -105,7 +105,7 @@ public class DeviceControl {
 	 * @return
 	 * @author 龙海成
 	 */
-	@DeleteMapping("{ID}")
+	@DeleteMapping("/deleteDevice/{ID}")
 	public String deleteDevice(@PathVariable("ID")Integer ID) {
 		boolean isdelete = false;
 		Device device = new Device();

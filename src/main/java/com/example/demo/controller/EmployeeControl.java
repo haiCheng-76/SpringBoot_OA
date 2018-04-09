@@ -11,24 +11,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.Employee;
 import com.example.demo.service.EmployeeService;
 
 @RestController
-@RequestMapping("/employeeControl")
+@RequestMapping(value = "/employeeControl")
 public class EmployeeControl {
 	private Logger log = Logger.getLogger(EmployeeControl.class);
 	@Autowired
 	private EmployeeService employeeService;
 	
-	@GetMapping()
-	public String isUser(@ModelAttribute("Employee") Employee emp) {
+	@GetMapping(value="/isUser")
+	public String isUser(@RequestParam("account") String account,@RequestParam("Password")String Password,@RequestParam("Role") Integer Role) {
 		String str = "";
 		boolean hasuser = false;
 		try {
-			hasuser = employeeService.getuserByUPR(emp.getEmployee_account(), emp.getPassword(), emp.getRole());
+			hasuser = employeeService.getuserByUPR(account,Password,Role);
 		} catch (Exception e) {
 			log.info("判断用户登陆失败时，网络出错！");
 			e.printStackTrace();
@@ -41,20 +42,10 @@ public class EmployeeControl {
 		return str;
 	}
 
-	@GetMapping()
-	public String forgetPassword(@ModelAttribute("Employee") Employee emp) {
-		String page = "";
-		boolean isupdate = employeeService.updatePassword(emp);
-		if (isupdate) {
-			page = "";
-		} else {
-			page = "";
-		}
-		return page;
-	}
 
-	@DeleteMapping("{ID}")
-	public String deleteEmployee(@PathVariable("{ID}")Integer ID) {
+
+	@DeleteMapping("/deleteEmployee/{ID}")
+	public String deleteEmployee(@RequestParam("ID")Integer ID) {
 		Employee e = new Employee();
 		e.setEmployee_id(ID);
 		boolean isdelete = false;
@@ -71,7 +62,7 @@ public class EmployeeControl {
 		return "ERROR";
 	}
 
-	@PostMapping()
+	@PostMapping(value="/addEmployee")
 	public String addEmployee(@ModelAttribute("Employee")Employee e) {
 		boolean isadd = false;
 		try {
@@ -87,7 +78,7 @@ public class EmployeeControl {
 		return "ERROR";
 	}
 
-	@GetMapping()
+	@GetMapping(value="/getallEmoloyee")
 	public List<Employee> getallEmoloyee() {
 		List<Employee> listEmployee = null;
 		try {
@@ -100,8 +91,8 @@ public class EmployeeControl {
 		return listEmployee;
 	}
 
-	@GetMapping("{ID}")
-	public Employee getEmployeeById(@PathVariable("{ID}")Integer id) {
+	@GetMapping("/getEmployeeById/{ID}")
+	public Employee getEmployeeById(@PathVariable("ID")Integer id) {
 		Employee resp = new Employee();
 		try {
 			resp = employeeService.selectEmployeeById(id);
@@ -112,7 +103,7 @@ public class EmployeeControl {
 		return resp;
 	}
 
-	@PutMapping()
+	@PutMapping(value="/updateEmployee")
 	public String updateEmployee(@ModelAttribute("Employee")Employee e) {
 		boolean isupdate = false;
 		try {
