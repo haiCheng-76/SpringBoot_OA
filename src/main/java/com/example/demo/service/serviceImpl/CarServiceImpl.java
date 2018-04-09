@@ -3,11 +3,13 @@ package com.example.demo.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.CarInfoDao;
 import com.example.demo.domain.CarInfo;
 import com.example.demo.service.CarService;
 
+@Service
 public class CarServiceImpl implements CarService {
 	@Autowired
 	private CarInfoDao carInfoDao;

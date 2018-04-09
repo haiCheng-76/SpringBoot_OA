@@ -3,26 +3,36 @@
 <head>
 <meta charset="utf-8">
 <title>龙海成OA系统</title>
-<link th:href="@{/oa_boot/static/img/favicon.ico}" href="../static/img/favicon.ico" rel="shortcut icon" />
+<link th:href="@{/oa_boot/static/img/favicon.ico}"
+	href="../static/img/favicon.ico" rel="shortcut icon" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link href="../static/css/bootstrap.min.css" th:href="@{/oa_boot/static/css/bootstrap.min.css}"" rel="stylesheet"
+<link href="../static/css/bootstrap.min.css"
+	th:href="@{/oa_boot/static/css/bootstrap.min.css}" " rel="stylesheet"
 	type="text/css" />
-<link href="../static/css/bootstrap-responsive.min.css" th:href="@{/oa_boot/static/css/bootstrap-responsive.min.css}"rel="stylesheet" type="text/css" />
+<link href="../static/css/bootstrap-responsive.min.css"
+	th:href="@{/oa_boot/static/css/bootstrap-responsive.min.css}"
+	rel="stylesheet" type="text/css" />
 
-<link href="../static/css/font-awesome.min.css" th:href="@{/oa_boot/static/css/font-awesome.min.css}" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css"
+	th:href="@{/oa_boot/static/css/font-awesome.min.css}" rel="stylesheet">
 
-<link href="../static/css/style.css" th:href="@{/oa_boot/static/css/style.css}" rel="stylesheet"
+<link href="../static/css/style.css"
+	th:href="@{/oa_boot/static/css/style.css}" rel="stylesheet"
 	type="text/css">
-<link href="../static/css/signin.css" th:href="@{/oa_boot/static/css/signin.css}" rel="stylesheet"
+<link href="../static/css/signin.css"
+	th:href="@{/oa_boot/static/css/signin.css}" rel="stylesheet"
 	type="text/css">
 <script type="text/javascript" charset="utf8"
-	src="../static/js/jquery-1.7.2.min.js"  th:src="@{/oa_boot/static/js/jquery-1.7.2.min.js}"></script>
-<script type="text/javascript" src="../static/js/main.js" th:src="@{/oa_boot/static/js/main.js}"></script>
+	src="../static/js/jquery-1.7.2.min.js"
+	th:src="@{/oa_boot/static/js/jquery-1.7.2.min.js}"></script>
+<script type="text/javascript" src="../static/js/main.js"
+	th:src="@{/oa_boot/static/js/main.js}"></script>
 <!-- layer -->
-<script type="text/javascript" src="../static/layer/layer.js" th:src="@{/oa_boot/static/layer/layer.js}"></script>
+<script type="text/javascript" src="../static/layer/layer.js"
+	th:src="@{/oa_boot/static/layer/layer.js}"></script>
 </head>
 
 
@@ -99,46 +109,50 @@
 
 
 
-<!-- 	<div class="login-extra">
+	<!-- 	<div class="login-extra">
 		<a href="javascript:forgetPwd()">忘记密码</a>
 	</div> -->
 	<div>
 		<h3 class="msg"></h3>
 	</div>
 	<!-- /login-extra -->
-	<script src="../static/js/jquery-1.7.2.min.js" th:src="@{/oa_boot/static/js/jquery-1.7.2.min.js}"></script>
-	<script src="../static/js/bootstrap.js"th:src="@{/oa_boot/static/js/bootstrap.js}"></script>
-	<script src="../static/js/signin.js" th:src="@{/oa_boot/static/js/signin.js}"></script>
+	<script src="../static/js/jquery-1.7.2.min.js"
+		th:src="@{/oa_boot/static/js/jquery-1.7.2.min.js}"></script>
+	<script src="../static/js/bootstrap.js"
+		th:src="@{/oa_boot/static/js/bootstrap.js}"></script>
+	<script src="../static/js/signin.js"
+		th:src="@{/oa_boot/static/js/signin.js}"></script>
 	<script type="text/javascript">
-	//忘记密码
-	function forgetPwd() {
-		layer_show('修改密码', '${ctx}/pageControl/toforgetpage', '500', '');
-	}
+		//忘记密码
+		function forgetPwd() {
+			layer_show('修改密码', '${ctx}/pageControl/toforgetpage', '500', '');
+		}
 		function login() {
-		var account = $("#account").val().trim();
-		var password = $("#password").val().trim();
-		var role = $("#role").val();
-			$.ajax({
-				url : "${ctx}/employeeControl/isuer",
-				type : "POST",
-				data : {
-					account : account,
-					password : password,
-					role : role
-				},
-				success : function(data) {
-					console.log(data)
-					if (data == "success") {
-						window.location.href = "${ctx}/pageControl/tomainpage.htm";
-					}
-					if (data == "error") {
-						alert("请正确输入！");
-					}
-				},
-				error : function(data) {
-					alert("系统错误,请稍后重试！");
-				}
-			});
+			var account = $("#account").val().trim();
+			var password = $("#password").val().trim();
+			var role = $("#role").val();
+			$
+					.ajax({
+						url : "${ctx}/employeeControl/isuer",
+						type : "POST",
+						data : {
+							account : account,
+							password : password,
+							role : role
+						},
+						success : function(data) {
+							console.log(data)
+							if (data == "success") {
+								window.location.href = "${ctx}/pageControl/tomainpage.htm";
+							}
+							if (data == "error") {
+								alert("请正确输入！");
+							}
+						},
+						error : function(data) {
+							alert("系统错误,请稍后重试！");
+						}
+					});
 		}
 	</script>
 

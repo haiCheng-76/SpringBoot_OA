@@ -4,7 +4,7 @@ spring:
     suffix: .html
     mode: HTML5
     encoding: utf-8
-    content-type: text/html
+    #content-type: text/html
     cache: false
   resources:
     chain:
