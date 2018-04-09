@@ -9,6 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/pageControl")
 public class PageControl {
+	/**
+	 * 跳转至index.html
+	 * @return
+	 */
+	@RequestMapping("/")
+	public String toindex() {
+		return "index";
+	}
 	@RequestMapping(value = "/topage")
 	public ModelAndView topage() {
 		ModelAndView mav = new ModelAndView("index");
@@ -16,17 +24,17 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/tomainpage.htm")
+	@RequestMapping(value = "/tomainpage")
 	public String toMainPage() {
 		return "Main";
 	}
 
-	@RequestMapping(value = "/toCaringoList.htm")
+	@RequestMapping(value = "/toCaringoList")
 	public String toCaringoList() {
 		return "CarInfo/ListCarInfo";
 	}
 
-	@RequestMapping(value = "/toShowCar.htm")
+	@RequestMapping(value = "/toShowCar")
 	public ModelAndView toShowCar(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("CarInfo/ShowCarInfo");
@@ -34,7 +42,7 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toEditCar.htm")
+	@RequestMapping(value = "/toEditCar")
 	public ModelAndView toEditCar(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("CarInfo/editCarInfo");
@@ -42,22 +50,22 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toaddCarinfo.htm")
+	@RequestMapping(value = "/toaddCarinfo")
 	public String toaddCarinfo() {
 		return "CarInfo/addCarinfo";
 	}
 
-	@RequestMapping(value = "/toEmployeePage.htm")
+	@RequestMapping(value = "/toEmployeePage")
 	public String toEmployeePage() {
 		return "Employee/ListEmployees";
 	}
 
-	@RequestMapping(value = "/toaddEmployee.htm")
+	@RequestMapping(value = "/toaddEmployee")
 	public String toaddEmployee() {
 		return "Employee/addEmployee";
 	}
 
-	@RequestMapping(value = "/toShowEmployee.htm")
+	@RequestMapping(value = "/toShowEmployee")
 	public ModelAndView toShowEmployee(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Employee/ShowEmployee");
@@ -65,7 +73,7 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toEditEmployee.htm")
+	@RequestMapping(value = "/toEditEmployee")
 	public ModelAndView toEditEmployee(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Employee/EditEmployees");
@@ -73,17 +81,17 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toDepartmentPage.htm")
+	@RequestMapping(value = "/toDepartmentPage")
 	public String toDepartmentPage() {
 		return "Department/ListDepartment";
 	}
 
-	@RequestMapping(value = "/toaddDepartment.htm")
+	@RequestMapping(value = "/toaddDepartment")
 	public String toaddDepartment() {
 		return "Department/addDepartment";
 	}
 
-	@RequestMapping(value = "/toShowDepartment.htm")
+	@RequestMapping(value = "/toShowDepartment")
 	public ModelAndView toShowDepartment(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Department/ShowDepartment");
@@ -91,7 +99,7 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toEditDepartment.htm")
+	@RequestMapping(value = "/toEditDepartment")
 	public ModelAndView toEditDepartment(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Department/EditDepartment");
@@ -99,22 +107,22 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toFilePage.htm")
+	@RequestMapping(value = "/toFilePage")
 	public String toFilePage() {
 		return "File/ListFile";
 	}
 
-	@RequestMapping(value = "/toDevicePage.htm")
+	@RequestMapping(value = "/toDevicePage")
 	public String toDevicePage() {
 		return "Device/ListDevice";
 	}
 
-	@RequestMapping(value = "/toaddDevice.htm")
+	@RequestMapping(value = "/toaddDevice")
 	public String toaddDevice() {
 		return "Device/addDevice";
 	}
 
-	@RequestMapping(value = "/toShowDevice.htm")
+	@RequestMapping(value = "/toShowDevice")
 	public ModelAndView toShowDevice(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Device/ShowDevice");
@@ -122,7 +130,7 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toEditDevice.htm")
+	@RequestMapping(value = "/toEditDevice")
 	public ModelAndView toEditDevice(String ID) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Device/EditDevice");
@@ -130,7 +138,7 @@ public class PageControl {
 		return mav;
 	}
 
-	@RequestMapping(value = "/toCarPage.htm")
+	@RequestMapping(value = "/toCarPage")
 	public String toCarPage() {
 		return "CarInfo/ListCarInfo";
 	}
